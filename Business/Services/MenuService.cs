@@ -8,19 +8,19 @@ public class MenuService
 
     public void ViewAllContactsDialog()
     {
-        // Hämta alla kontakter
+        // Hämtar alla kontakter
         var contacts = _contactService.GetAll();
 
         // Loopa igenom alla kontakter och skriv ut dem, en efter en
         foreach (var contact in contacts)
         {
-            Console.WriteLine($"{"Namn:",-15}{contact.FirstName} {contact.LastName}"); // Merging FirstName and LastName to a full name
+            Console.WriteLine($"{"Id:",-15}{contact.Id}");
+            Console.WriteLine($"{"Namn:",-15}{contact.FirstName} {contact.LastName}"); // Flyttar ihop förnamn och efternamn för göra fullständigt namn
             Console.WriteLine($"{"Adress:",-15}{contact.Address}");
             Console.WriteLine($"{"Postnummer:",-15}{contact.PostalCode}");
             Console.WriteLine($"{"Ort/stad:",-15}{contact.City}");
             Console.WriteLine($"{"E-postadress:",-15}{contact.Email}");
-            Console.WriteLine($"{"Telefon:",-15}{contact.PhoneNumber}");
-            Console.WriteLine($"{"Id:",-15}{contact.Id} \n");
+            Console.WriteLine($"{"Telefon:",-15}{contact.PhoneNumber}\n");
 
             // Lär mig placering i konsolen, kodexempel nedan: https://medium.com/@patelrajni31/how-to-do-alignment-within-string-format-in-c-9ebd001da344
             // Console.WriteLine("-------------------------------");

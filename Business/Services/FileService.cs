@@ -35,12 +35,17 @@ public class FileService
     // SaveListToFile sparar listan med try/catch till en JSON-fil.
     public void SaveListToFile(List<Contact> list)
     {
-        // Om det uppstår ett fel skrivs det ut i Debug-fönstret.
+        // En try/catch används för att hantera eventuella fel som kan uppstå
         try
         {
-            _fileHandler.CreateDirectoryIfNotExists(_directoryPath);
+            // Om mappen inte finns skapas den.
+            if (!Directory.Exists(_directoryPath))
+            {
+                Directory.CreateDirectory(_directoryPath);
+            }
+            // Serialiserar listan till JSON och sparar den i filen.
             var json = JsonSerializer.Serialize(list, _jsonSerializerOptions);
-            _fileHandler.WriteToFile(_filePath, json);
+            File.WriteAllText(_filePath, json);
         }
         catch (Exception ex)
         {

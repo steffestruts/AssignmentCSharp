@@ -6,7 +6,7 @@ public class MenuDialog(MenuService menuService)
 {
     private readonly MenuService _menuService = menuService;
 
-    // Dialog för att visa menyn
+    // Visar en dialog för att välja alternativ
     public void MenuOptionsDialog()
     {
         // Loopa tills användaren väljer att avsluta applikationen
@@ -40,7 +40,7 @@ public class MenuDialog(MenuService menuService)
                 case "clr":
                     Console.Clear();
                     break;
-                // Okänd inmatning - Försök igen
+                // Ogiltig inmatning - Försök igen
                 default:
                     Console.WriteLine("\n----------------------------------------------");
                     Console.WriteLine("\nOgiltig inmatning! Försök igen.\n");

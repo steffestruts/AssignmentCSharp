@@ -19,7 +19,6 @@ public class FileService
     private readonly JsonSerializerOptions _jsonSerializerOptions;
     private readonly FileHandler _fileHandler;
 
-    // Konstruktorn tar emot en sökväg till mappen där filen ska sparas och filnamnet.
     public FileService(string directoryPath = "Data", string fileName = "contacts.json")
     {
         // _directoryPath är sökvägen till mappen där filen ska sparas.
@@ -27,7 +26,7 @@ public class FileService
         // _filePath är sökvägen till filen som ska sparas.
         _filePath = Path.Combine(_directoryPath, fileName);
         // _serializerService används för att serialisera och deserialisera JSON-filer.
-        _jsonSerializerOptions = new JsonSerializerOptions();
+        _jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true };
         // _fileHandler används för att skriva och läsa från filer.
         _fileHandler = new FileHandler();
     }
@@ -43,6 +42,7 @@ public class FileService
             {
                 Directory.CreateDirectory(_directoryPath);
             }
+
             // Serialiserar listan till JSON och sparar den i filen.
             var json = JsonSerializer.Serialize(list, _jsonSerializerOptions);
             File.WriteAllText(_filePath, json);
@@ -59,19 +59,18 @@ public class FileService
         // Om filen inte finns returneras en tom lista.
         try
         {
-            if (!_fileHandler.FileExists(_filePath))
+            if (!File.Exists(_filePath))
             {
-                return new List<Contact>();
+                return [];
             }
-
-            var json = _fileHandler.ReadFromFile(_filePath);
+            var json = File.ReadAllText(_filePath);
             var list = JsonSerializer.Deserialize<List<Contact>>(json, _jsonSerializerOptions);
-            return list ?? new List<Contact>();
+            return list ?? [];
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
-            return new List<Contact>();
+            return [];
         }
     }
 }

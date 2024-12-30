@@ -30,8 +30,6 @@ public class MenuService
             // Console.WriteLine(String.Format("{0,-10} | {1,-10} | {2,5}", "Alena", "Parker", 55));
             // Console.WriteLine(String.Format("{0,-10} | {1,-10} | {2,5}", "John", "Roy", 40));
         }
-        Console.WriteLine("******************************************************** \n");
-
     }
 
     public void CreateContactDialog()
@@ -59,7 +57,8 @@ public class MenuService
         // Inmatning: City or stad/ort
         Console.Write("Skriv in stad/ort: ");
         contact.City = Console.ReadLine()!;
-        Console.WriteLine(""); // Tom rad för bättre läsbarhet
+        // Tom rad för bättre läsbarhet
+        Console.WriteLine(""); 
 
         // Lägger till en ny kontakt
         _contactService.Add(contact);

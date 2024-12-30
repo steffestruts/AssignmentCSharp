@@ -22,7 +22,6 @@ public class MenuDialog(MenuService menuService)
                 case "1":
                     Console.Clear();
                     Console.WriteLine("---> Visar kontakter <--- \n");
-                    Console.WriteLine("******************************************************** \n");
                     _menuService.ViewAllContactsDialog();
                     break;
                 // Skapa en ny kontakt

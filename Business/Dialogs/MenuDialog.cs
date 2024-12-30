@@ -6,6 +6,7 @@ public class MenuDialog(MenuService menuService)
 {
     private readonly MenuService _menuService = menuService;
 
+    // Dialog för att visa menyn
     public void MenuOptionsDialog()
     {
         while (true)
@@ -16,29 +17,29 @@ public class MenuDialog(MenuService menuService)
             var option = Dialogs.Prompt("\nVar vänlig och välj ett alternativ: ");
             switch (option)
             {
-                // View all contacts
+                // Visar alla kontakter
                 case "1":
                     Console.Clear();
                     Console.WriteLine("---> Visar kontakter <--- \n");
                     Console.WriteLine("******************************************************** \n");
                     _menuService.ViewAllContactsDialog();
                     break;
-                // Create a new contact
+                // Skapa en ny kontakt
                 case "2":
                     Console.Clear();
                     Console.WriteLine("---> Skapa en ny kontakt <--- \n");
                     _menuService.CreateContactDialog();
                     break;
-                // Quit the console application
+                // Avsluta applikationen
                 case "3":
                     Console.WriteLine("\nHej då!");
                     Environment.Exit(-1);
                     return;
-                // Clear the console
+                // Rensa konsolfönstret
                 case "clr":
                     Console.Clear();
                     break;
-                // Invalid input - Try again message
+                // Okänd inmatning - Försök igen
                 default:
                     Console.WriteLine("\n----------------------------------------------");
                     Console.WriteLine("\nOgiltig inmatning! Försök igen.\n");

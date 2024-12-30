@@ -34,6 +34,7 @@ public class FileService
     // SaveListToFile sparar listan med try/catch till en JSON-fil.
     public void SaveListToFile(List<Contact> list)
     {
+        // Om det uppstår ett fel skrivs det ut i Debug-fönstret.
         try
         {
             _fileHandler.CreateDirectoryIfNotExists(_directoryPath);
@@ -49,6 +50,7 @@ public class FileService
     // LoadListFromFile laddar listan med try/catch från en JSON-fil.
     public List<Contact> LoadListFromFile()
     {
+        // Om filen inte finns returneras en tom lista.
         try
         {
             if (!_fileHandler.FileExists(_filePath))

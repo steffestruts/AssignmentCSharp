@@ -6,12 +6,14 @@ public class ContactService
     private List<Contact> _contacts = [];
     private readonly FileService _fileService = new(@"c:\projekt", "contacts.json");
 
+    // Add lägger till en kontakt i listan och sparar listan till en fil.
     public void Add(Contact contact)
     {
         _contacts.Add(contact);
         _fileService.SaveListToFile(_contacts);
     }
 
+    // GetAll hämtar alla kontakter från filen.
     public IEnumerable<Contact> GetAll()
     {
         _contacts = _fileService.LoadListFromFile();

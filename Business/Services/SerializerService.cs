@@ -2,7 +2,7 @@
 
 namespace Business.Services;
 
-/* Detta är genererat av Chat GPT 4o - Koden gör de/se -rialisering av den sparade filen, som är sparad som en JSON-fil. */
+/* Detta är genererat av Chat GPT 4o - Koden gör se/de -rialisering av den sparade filen, som är sparad som en JSON-fil. */
 
 public class SerializerService
 {

@@ -16,9 +16,10 @@ public class FileService
 {
     private readonly string _directoryPath;
     private readonly string _filePath;
-    private readonly SerializerService _serializerService;
+    private readonly JsonSerializerOptions _jsonSerializerOptions;
     private readonly FileHandler _fileHandler;
 
+    // Konstruktorn tar emot en sökväg till mappen där filen ska sparas och filnamnet.
     public FileService(string directoryPath = "Data", string fileName = "contacts.json")
     {
         // _directoryPath är sökvägen till mappen där filen ska sparas.
@@ -26,7 +27,7 @@ public class FileService
         // _filePath är sökvägen till filen som ska sparas.
         _filePath = Path.Combine(_directoryPath, fileName);
         // _serializerService används för att serialisera och deserialisera JSON-filer.
-        _serializerService = new SerializerService();
+        _jsonSerializerOptions = new JsonSerializerOptions();
         // _fileHandler används för att skriva och läsa från filer.
         _fileHandler = new FileHandler();
     }
@@ -38,7 +39,7 @@ public class FileService
         try
         {
             _fileHandler.CreateDirectoryIfNotExists(_directoryPath);
-            var json = _serializerService.Serialize(list);
+            var json = JsonSerializer.Serialize(list, _jsonSerializerOptions);
             _fileHandler.WriteToFile(_filePath, json);
         }
         catch (Exception ex)
@@ -55,17 +56,17 @@ public class FileService
         {
             if (!_fileHandler.FileExists(_filePath))
             {
-                return [];
+                return new List<Contact>();
             }
 
             var json = _fileHandler.ReadFromFile(_filePath);
-            var list = _serializerService.Deserialize<List<Contact>>(json);
-            return list ?? [];
+            var list = JsonSerializer.Deserialize<List<Contact>>(json, _jsonSerializerOptions);
+            return list ?? new List<Contact>();
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
-            return [];
+            return new List<Contact>();
         }
     }
 }

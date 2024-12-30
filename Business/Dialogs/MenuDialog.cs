@@ -9,6 +9,7 @@ public class MenuDialog(MenuService menuService)
     // Dialog för att visa menyn
     public void MenuOptionsDialog()
     {
+        // Loopa tills användaren väljer att avsluta applikationen
         while (true)
         {
             Console.WriteLine("1. Visa kontakter");

@@ -1,5 +1,5 @@
 ﻿namespace BusinessTests.Services;
 
-public class SerializerService_Tests
+public class FileManager_Tests
 {
 }

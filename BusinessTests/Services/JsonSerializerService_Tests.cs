@@ -1,5 +1,5 @@
 ﻿namespace BusinessTests.Services;
 
-public class FileHandler_Tests
+public class JsonSerializerService_Tests
 {
 }

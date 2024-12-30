@@ -21,13 +21,13 @@ public class MenuDialog(MenuService menuService)
                 // Visar alla kontakter
                 case "1":
                     Console.Clear();
-                    Console.WriteLine("---> Visar kontakter <--- \n");
+                    Console.WriteLine("---> Visar kontakter \n");
                     _menuService.ViewAllContactsDialog();
                     break;
                 // Skapa en ny kontakt
                 case "2":
                     Console.Clear();
-                    Console.WriteLine("---> Skapa en ny kontakt <--- \n");
+                    Console.WriteLine("---> Skapa en ny kontakt \n");
                     _menuService.CreateContactDialog();
                     break;
                 // Avsluta applikationen

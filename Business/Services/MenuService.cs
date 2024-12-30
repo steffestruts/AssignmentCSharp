@@ -1,7 +1,6 @@
 ﻿using Business.Models;
 
 namespace Business.Services;
-
 public class MenuService
 {
     private readonly ContactService _contactService = new();

@@ -33,6 +33,7 @@ public class MenuService
 
     public void CreateContactDialog()
     {
+
         Contact contact = new();
 
         // Inmatning: FirstName or förnamn

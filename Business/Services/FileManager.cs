@@ -1,49 +1,53 @@
 ﻿using System.Diagnostics;
 
 /* Detta är genererat av Chat GPT 4o - Tidigare kod såg ungefär likadan ut. 
- * Använde Chat GPT göra det mer SRP, blev osäker hur gränserna definieras i S för SOLID */
+ * Använde Chat GPT göra det mer SRP, blev osäker hur gränserna definieras i S för SOLID
+ * Nedan kod skriver listan till fil och läser filen, allt med try-catch för fånga fel. Resten kollar om filen/mappen finns*/
 
-namespace Business.Services
+namespace Business.Services;
+
+public class FileManager
 {
-    public class FileManager
+    // Skriver innehållet till en fil med try-catch
+    public void WriteToFile(string filePath, string content)
     {
-        public void WriteToFile(string filePath, string content)
+        try
         {
-            try
-            {
-                File.WriteAllText(filePath, content);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                throw;
-            }
+            File.WriteAllText(filePath, content);
         }
-
-        public string ReadFromFile(string filePath)
+        catch (Exception ex)
         {
-            try
-            {
-                return File.ReadAllText(filePath);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                throw;
-            }
+            Debug.WriteLine(ex.Message);
+            throw;
         }
+    }
 
-        public bool FileExists(string filePath)
+    // Läser innehållet från en fil med try-catch
+    public string ReadFromFile(string filePath)
+    {
+        try
         {
-            return File.Exists(filePath);
+            return File.ReadAllText(filePath);
         }
-
-        public void CreateDirectoryIfNotExists(string directoryPath)
+        catch (Exception ex)
         {
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
+            Debug.WriteLine(ex.Message);
+            throw;
+        }
+    }
+
+    // Kontrollerar om en fil existerar
+    public bool FileExists(string filePath)
+    {
+        return File.Exists(filePath);
+    }
+
+    // Skapar en mapp om den inte existerar
+    public void CreateDirectoryIfNotExists(string directoryPath)
+    {
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
         }
     }
 }

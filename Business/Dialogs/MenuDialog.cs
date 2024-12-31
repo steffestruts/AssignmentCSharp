@@ -9,25 +9,23 @@ public class MenuDialog(MenuService menuService)
     // Visar en dialog för att välja alternativ
     public void MenuOptionsDialog()
     {
-        // Loopa tills användaren väljer att avsluta applikationen
+        // Loopa tills användaren väljer att avsluta applikationen utanför skapa en ny kontakt
         while (true)
         {
-            Console.WriteLine("1. Visa kontakter");
-            Console.WriteLine("2. Skapa en ny kontakt");
-            Console.WriteLine("3. För att avsluta applikationen");
+            Console.WriteLine("1. Visa kontakter.");
+            Console.WriteLine("2. Skapa en ny kontakt.");
+            Console.WriteLine("3. För att avsluta applikationen.");
             var option = Dialogs.Prompt("\nVar vänlig och välj ett alternativ: ");
             switch (option)
             {
                 // Visar alla kontakter
                 case "1":
-                    Console.Clear();
-                    Console.WriteLine("---> Visar kontakter \n");
+                    Console.WriteLine("\n---> Visar kontakter \n");
                     _menuService.ViewAllContactsDialog();
                     break;
                 // Skapa en ny kontakt
                 case "2":
-                    Console.Clear();
-                    Console.WriteLine("---> Skapa en ny kontakt \n");
+                    Console.WriteLine("\n---> Skapa en ny kontakt \n");
                     _menuService.CreateContactDialog();
                     break;
                 // Avsluta applikationen
@@ -35,14 +33,14 @@ public class MenuDialog(MenuService menuService)
                     Console.WriteLine("\nHej då!");
                     Environment.Exit(-1);
                     return;
-                // Rensa konsolfönstret
+                // Rensar konsolfönstret - underlättar för användaren
                 case "clr":
                     Console.Clear();
                     break;
                 // Ogiltig inmatning - Försök igen
                 default:
-                    Console.WriteLine("\n----------------------------------------------");
-                    Console.WriteLine("\nOgiltig inmatning! Försök igen.\n");
+                    Console.Clear();
+                    Console.WriteLine("Ogiltig inmatning! Försök igen.\n");
                     break;
             }
         }

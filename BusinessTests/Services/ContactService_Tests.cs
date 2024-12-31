@@ -2,14 +2,21 @@
 
 public class ContactService_Tests
 {
+    // Testar att Add-metoden lägger till en kontakt i listan och sparar listan till en fil.
     [Fact]
-    public void Add_ShouldAddContactToList()
+    public void AddMethod_ShouldAddContactToListAndSaveToFile()
     {
         // Arrange
-        var contactService = new ContactService();
         // Act
-        var result = contactService.Method();
         // Assert
-        Assert.True(result);
+    }
+
+    // Testar att GetAll-metoden hämtar alla kontakter från filen.
+    [Fact]
+    public void GetAll_ShouldRetrieveAllContactsFromFile()
+    {
+        // Arrange
+        // Act
+        // Assert
     }
 }

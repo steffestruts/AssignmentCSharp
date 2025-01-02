@@ -4,7 +4,7 @@ public class ContactService_Tests
 {
     // Testar att Add-metoden lägger till en kontakt i listan och sparar listan till en fil.
     [Fact]
-    public void AddMethod_ShouldAddContactToListAndSaveToFile()
+    public void Add_ShouldAddContactToListAndSaveToFile()
     {
         // Arrange
         // Act

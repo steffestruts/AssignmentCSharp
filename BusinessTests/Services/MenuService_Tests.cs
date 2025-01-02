@@ -10,6 +10,7 @@ public class MenuService_Tests
         // Act
         // Assert
     }
+
     // Testar metoden om den skapar en ny kontakt
     [Fact]
     //

@@ -2,7 +2,7 @@
 
 /* Detta är genererat av Chat GPT 4o - Tidigare kod såg ungefär likadan ut. 
  * Använde Chat GPT göra det mer SRP, blev osäker hur gränserna definieras i S för SOLID
- * Nedan är det kod som serialiser objektet till JSON och annan som deserialiserar */
+ * Nedan är det kod som serialiser objektet till JSON och annan som deserialiserar. Om jag minns rätt så låg denna i FileService tidigare. */
 
 namespace Business.Services
 {

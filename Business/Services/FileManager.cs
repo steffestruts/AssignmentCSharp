@@ -2,7 +2,8 @@
 
 /* Detta är genererat av Chat GPT 4o - Tidigare kod såg ungefär likadan ut. 
  * Använde Chat GPT göra det mer SRP, blev osäker hur gränserna definieras i S för SOLID
- * Nedan kod skriver listan till fil och läser filen, allt med try-catch för fånga fel. Resten kollar om filen/mappen finns*/
+ * Nedan kod skriver listan till fil och läser filen, allt med try-catch för fånga fel. Resten kollar om filen/mappen finns. 
+ * Om jag minns rätt så låg denna i FileService tidigare, som gjorde det mesta */
 
 namespace Business.Services;
 

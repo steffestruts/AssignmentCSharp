@@ -1,5 +1,5 @@
-﻿using Business.Models;
-using Business.Services;
+﻿using Business.Services;
+
 namespace Business.Dialogs;
 
 public class MenuDialog(MenuService menuService)
@@ -9,14 +9,15 @@ public class MenuDialog(MenuService menuService)
     // Visar en dialog för att välja alternativ
     public void MenuOptionsDialog()
     {
-        // Loopa tills användaren väljer att avsluta applikationen utanför skapa en ny kontakt
+        // Loopar tills användaren väljer att avsluta applikationen när menyn visas. Jag har inte fixat en avslutning utanför menyn som exempel under skapandet av kontakt.
         while (true)
         {
             Console.WriteLine("1. Visa kontakter.");
             Console.WriteLine("2. Skapa en ny kontakt.");
             Console.WriteLine("3. För att avsluta applikationen.");
-            var option = Dialogs.Prompt("\nVar vänlig och välj ett alternativ: ");
-            switch (option)
+            Console.Write("\nVar vänlig och välj ett alternativ: ");
+            var choice = Console.ReadLine();
+            switch (choice)
             {
                 // Visar alla kontakter
                 case "1":

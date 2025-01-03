@@ -4,7 +4,7 @@ using System.Diagnostics;
 /* Detta är genererat av Chat GPT 4o - Tidigare kod såg ungefär likadan ut. 
  * Använde Chat GPT göra det mer SRP, blev osäker hur gränserna definieras i S för SOLID
  * Nedan kommer koden deklarera _directorPath (sökvägen - går att ändra i contactservice), _filePath (filnamnet - går att ändra i contactservice), 
- * filemanager och jsonSerializerService för använda deras metoder */
+ * filemanager och jsonSerializerService för använda deras metoder. */
 
 namespace Business.Services
 {

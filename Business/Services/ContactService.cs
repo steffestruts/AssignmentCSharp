@@ -21,4 +21,3 @@ public class ContactService
         return _contacts;
     }
 }
-

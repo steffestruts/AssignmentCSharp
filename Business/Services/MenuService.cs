@@ -3,7 +3,12 @@
 namespace Business.Services;
 public class MenuService
 {
-    private readonly ContactService _contactService = new();
+    private readonly ContactService _contactService;
+
+    public MenuService(ContactService contactService)
+    {
+        _contactService = contactService;
+    }
 
     public void ViewAllContactsDialog()
     {
@@ -58,7 +63,7 @@ public class MenuService
         Console.Write("Skriv in stad/ort: ");
         contact.City = Console.ReadLine()!;
         // Tom rad för bättre läsbarhet
-        Console.WriteLine(""); 
+        Console.WriteLine("");
 
         // Lägger till en ny kontakt
         _contactService.Add(contact);

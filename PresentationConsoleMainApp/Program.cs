@@ -1,7 +1,8 @@
 ﻿using Business.Dialogs;
 using Business.Services;
 
-var menuService = new MenuService();
+var contactService = new ContactService();
+var menuService = new MenuService(contactService);
 var menuDialog = new MenuDialog(menuService);
 
 menuDialog.MenuOptionsDialog();

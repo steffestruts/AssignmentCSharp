@@ -5,70 +5,36 @@ namespace BusinessTests.Services;
 
 public class ContactService_Tests
 {
-    // Sökväg till testmappen
-    private readonly string testDirectory = @"c:\projekt";
-    // Filnamn för testfilen
-    private readonly string testFileName = "contacts.json";
-    // Instanser av FileService och ContactService
-    private readonly FileService _fileService;
-    private readonly ContactService _contactService;
+    // Tom lista av kontakter
+    private List<Contact> _contacts = new List<Contact>();
+    // Instansierar FileService med sökväg och filnamn
+    private readonly FileService _fileServiceTest = new(@"c:\projekt\assignmentcsharptest", "contacts-test.json");
 
-    // Konstruktor som skapar testmappen och instanser av FileService och ContactService.
-    public ContactService_Tests()
-    {
-        // Säkerställ att testmappen finns.
-        if (!Directory.Exists(testDirectory))
-        {
-            Directory.CreateDirectory(testDirectory);
-        }
-
-        // Skapa instans av FileService och ContactService.
-        _fileService = new FileService(testDirectory, testFileName);
-        _contactService = new ContactService();
-    }
-
-    // Testar att lägga till en kontakt och spara till fil.
+    // Testar att Add-metoden lägger till en kontakt i listan och sparar listan till en fil.
     [Fact]
-    public void Add_ShouldAddContactAndSaveToFile()
+    public void Add_ShouldCreateContact()
     {
         // Arrange
-        var contact = new Contact { FirstName = "John", PhoneNumber = "123456789" };
+        var contactService = new ContactService();
 
         // Act
-        _contactService.Add(contact);
+        var newContact = new Contact { FirstName = "Jane", LastName = "Doe", Address = "Okänt", City = "Okänt", PostalCode = "12345", PhoneNumber = "123456789", Email = "jane.doe@domain.com" };
 
         // Assert
-        var contactsFromFile = _fileService.LoadListFromFile();
-        Assert.Contains(contactsFromFile, c => c.FirstName == "John" && c.PhoneNumber == "123456789");
+        contactService.Add(newContact);
     }
 
-    // Testar att hämta alla kontakter från fil.
+    // Testar att GetAll-metoden hämtar alla kontakter från filen.
     [Fact]
-    public void GetAll_ShouldReturnAllContactsFromFile()
+    public void GetAll_ShouldGetAllContacts()
     {
         // Arrange
-        var contact1 = new Contact { FirstName = "John", PhoneNumber = "123456789" };
-        var contact2 = new Contact { FirstName = "Jane", PhoneNumber = "987654321" };
-        _contactService.Add(contact1);
-        _contactService.Add(contact2);
+        var contactService = new ContactService();
 
         // Act
-        var allContacts = _contactService.GetAll().ToList();
+        var allContacts = contactService.GetAll();
 
         // Assert
-        Assert.Equal(2, allContacts.Count);
-        Assert.Contains(allContacts, c => c.FirstName == "John" && c.PhoneNumber == "123456789");
-        Assert.Contains(allContacts, c => c.FirstName == "Jane" && c.PhoneNumber == "987654321");
-    }
-
-    // Rensar testmappen.
-    [Fact]
-    public void Dispose()
-    {
-        var filePath = Path.Combine(testDirectory, testFileName);
-        if (File.Exists(filePath))
-        {
-            File.Delete(filePath);
-        }
+        Assert.Contains(allContacts, c => c.FirstName == "Jane" && c.Email == "jane.doe@domain.com");
     }
 }

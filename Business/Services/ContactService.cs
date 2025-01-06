@@ -3,6 +3,7 @@
 namespace Business.Services;
 public class ContactService
 {
+    // Tom lista av kontakter
     private List<Contact> _contacts = [];
     // Instansierar FileService med sökväg (mappen projekt i c) och filnamn (med filnamnet contacts.json)
     private readonly FileService _fileService = new(@"c:\projekt", "contacts.json");

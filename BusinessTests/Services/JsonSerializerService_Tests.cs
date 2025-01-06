@@ -6,6 +6,7 @@ namespace BusinessTests.Services;
 
 public class JsonSerializerService_Tests
 {
+    // Testar att serialisera objekt till JSON-korrekt
     [Fact]
     public void SerializeToJson_ShouldSerializeObjectCorrectly()
     {
@@ -13,7 +14,7 @@ public class JsonSerializerService_Tests
         var service = new JsonSerializerService();
         var testObject = new Contact
         {
-            FirstName = "John",
+            FirstName = "Jane",
             LastName = "Doe"
         };
 
@@ -21,23 +22,24 @@ public class JsonSerializerService_Tests
         string json = service.SerializeToJson(testObject);
 
         // Assert
-        Assert.Contains("\"FirstName\": \"John\"", json);
+        Assert.Contains("\"FirstName\": \"Jane\"", json);
         Assert.Contains("\"LastName\": \"Doe\"", json);
     }
 
+    // Testar att deserialisera JSON-korrekt
     [Fact]
     public void DeserializeFromJson_ShouldDeserializeJsonCorrectly()
     {
         // Arrange
         var service = new JsonSerializerService();
-        string json = "{\"FirstName\": \"John\", \"LastName\": \"Doe\"}";
+        string json = "{\"FirstName\": \"Jane\", \"LastName\": \"Doe\"}";
 
         // Act
         var contact = service.DeserializeFromJson<Contact>(json);
 
         // Assert
         Assert.NotNull(contact);
-        Assert.Equal("John", contact?.FirstName);
+        Assert.Equal("Jane", contact?.FirstName);
         Assert.Equal("Doe", contact?.LastName);
     }
 }
